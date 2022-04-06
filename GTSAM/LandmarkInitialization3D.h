@@ -3,7 +3,7 @@
  * @file  LandmarkInitialization3D.h
  * @brief Range-only 3D Initialization
  * Author : Sid Mahapatra @ Flanders Make
- * Status: Trilaterate, MDS, Bancroft with algo selection succesful | Cleaning pending
+ * Status: Trilaterate, MDS, Bancroft with algo selection successful | Cleaning pending
  */
 
 #pragma once
