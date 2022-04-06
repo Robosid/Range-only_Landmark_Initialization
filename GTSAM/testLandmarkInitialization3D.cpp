@@ -56,7 +56,7 @@ TEST( LandmarkInitialization3D, unwhitenedError ) {
   values.insert(3, pose3);
   values.insert(4, pose4);
 
-  LandmarkInitialization3D f(99.9);
+  LandmarkInitialization3D f;
   double r1 = f.dist(pose1.translation(), p), r2 = f.dist(pose2.translation(), p), r3 = f.dist(pose3.translation(), p), r4 = f.dist(pose4.translation(), p);
   f.addRange(1, r1);
 
@@ -80,14 +80,14 @@ TEST( LandmarkInitialization3D, unwhitenedError ) {
 
   f.addRange(4, r4);
   Vector actual4 = f.unwhitenedError(values);
-  //EXPECT_LONGS_EQUAL(4, f.keys().size());
-  //EXPECT(assert_equal((Vector(1) << 0.0).finished(), actual4));
+  EXPECT_LONGS_EQUAL(4, f.keys().size());
+  EXPECT(assert_equal((Vector(1) << 0.0).finished(), actual4));
 
   //f.addRange(5, r5);
   //EXPECT_LONGS_EQUAL(5, f.keys().size());
   //Point3 check_point = f.MDS_loc_engine_3D(values);
-  Point3 check_point = f.Bancroft_loc_engine_3D(values);
-  CHECK(assert_equal(p, check_point));
+  Point3 point = f.initialize(values);
+  CHECK(assert_equal(p, point));
 
   // Check keys and Jacobian
   //vector<Matrix> H(4);
